@@ -4,10 +4,13 @@ from itertools import product
 
 import numpy as np
 
+def lambda_create_saf_explicit():
+    return StochasticActionFunction({})
+
 
 class JointStochasticActionFunction:
     def __init__(self, probs_dict_dict):
-        self.saf_dict = defaultdict(lambda: StochasticActionFunction({}))
+        self.saf_dict = defaultdict(lambda_create_saf_explicit())
         for agent, probs_dict in probs_dict_dict.items():
             self.saf_dict[agent] = StochasticActionFunction(probs_dict)
 
